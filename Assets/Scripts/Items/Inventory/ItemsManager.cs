@@ -13,6 +13,7 @@
 		[SerializeField] private BoxCollider itemSpawnArea;
 		[SerializeField] private float itemSpawnInterval;
 		[SerializeField] private GameObjectPool gameObjectPool;
+		[SerializeField] private ItemsContainer itemsContainer;
 
 		private float nextItemSpawnTime;
 
@@ -27,8 +28,13 @@
 			if (Input.GetKeyDown(KeyCode.Space))
 				inventoryController.SellAllItemsUpToValue(itemSellMaxValue);
 
-		}
+			if (Input.GetKeyDown(KeyCode.E))
+				inventoryController.UseFirstItem();
 
+		}
+		
+		
+		
 		private void SpawnNewItem()
 		{
 			nextItemSpawnTime = Time.time + itemSpawnInterval;
@@ -43,8 +49,11 @@
 			var newItem = gameObjectPool.Get();
 			newItem.transform.position = position;
 			newItem.transform.parent = itemSpawnParent;
-		}
 
+			newItem.GetComponent<ItemPresenter>().SetItem(itemsContainer.GetRandomItem());
+		}
+		
+		
 		private void TryPickUpItem()
 		{
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);

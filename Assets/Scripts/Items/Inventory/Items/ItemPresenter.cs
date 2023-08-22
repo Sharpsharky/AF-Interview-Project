@@ -1,13 +1,22 @@
-﻿namespace AFSInterview.Items.Inventory.Items
+﻿using AFSInterview.Items.Inventory.Items.ItemsSO;
+
+namespace AFSInterview.Items.Inventory.Items
 {
 	using General;
 	using UnityEngine;
+	using Sirenix.OdinInspector;
 
-	public class ItemPresenter : MonoBehaviour, IItemHolder, IGameObjectPooled
+	public class ItemPresenter : SerializedMonoBehaviour, IItemHolder, IGameObjectPooled
 	{
-		[SerializeField] private Item item;
+		[SerializeField, InlineEditor] private Item item;
 		public GameObjectPool Pool { get; set; }
 
+
+		public void SetItem(Item item)
+		{
+			this.item = item;
+		}
+		
 		public Item GetItem(bool disposeHolder)
 		{
 			if (disposeHolder) 

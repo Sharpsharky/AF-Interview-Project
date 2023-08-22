@@ -1,10 +1,9 @@
-﻿namespace AFSInterview.Items.Inventory.Items
+﻿namespace AFSInterview.Items.Inventory.Items.ItemsSO
 {
-	using System;
 	using UnityEngine;
 
-	[Serializable]
-	public class Item
+	[CreateAssetMenu(menuName = "Items/Item")]
+	public class Item : ScriptableObject
 	{
 		[SerializeField] private string name;
 		[SerializeField] private int value;
@@ -18,7 +17,7 @@
 			this.value = value;
 		}
 
-		public void Use()
+		public virtual void Use(InventoryController inventoryController)
 		{
 			Debug.Log("Using" + Name);
 		}

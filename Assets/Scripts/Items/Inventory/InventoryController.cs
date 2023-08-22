@@ -1,13 +1,16 @@
-﻿namespace AFSInterview.Items.Inventory
+﻿using AFSInterview.Items.Inventory.Items.ItemsSO;
+
+namespace AFSInterview.Items.Inventory
 {
 	using System;
 	using System.Collections.Generic;
 	using Items;
 	using UnityEngine;
-	
-	public class InventoryController : MonoBehaviour
+	using Sirenix.OdinInspector;
+
+	public class InventoryController : SerializedMonoBehaviour
 	{
-		[SerializeField] private List<Item> items;
+		[SerializeField, InlineEditor] private List<Item> items;
 		[SerializeField] private int money;
 		
 		public event Action<int> OnReloadMoneyText;
@@ -39,5 +42,26 @@
 		{
 			items.Add(item);
 		}
+
+		public void UseFirstItem()
+		{
+			if (items.Count == 0) return;
+			
+			items[0].Use(this);			
+			
+			items.RemoveAt(0);
+		}
+
+		public void AddMoney(int moneyToAdd)
+		{
+			money += moneyToAdd;
+			OnReloadMoneyText?.Invoke(money);
+		}
+		
+		public void AddDifferentItem(Item item)
+		{
+			items.Add(item);
+		}
+		
 	}
 }

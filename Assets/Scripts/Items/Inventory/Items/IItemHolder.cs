@@ -1,4 +1,6 @@
-﻿namespace AFSInterview.Items.Inventory.Items
+﻿using AFSInterview.Items.Inventory.Items.ItemsSO;
+
+namespace AFSInterview.Items.Inventory.Items
 {
 	public interface IItemHolder
 	{
