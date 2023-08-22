@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c979f032b864d9195c502cc11f6b5b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a5e08c58c324448a1893e22fac4b0af, type: 3}
   m_Name: Long Sword Knight
   m_EditorClassIdentifier: 
   serializationData:
@@ -25,4 +25,4 @@ MonoBehaviour:
   attackDamage: 35
   healthPoints: 70
   armorPoints: 70
-  unitAttribute: {fileID: 11400000, guid: 890db0f9f8a23ff4794e7c1380e73dc4, type: 2}
+  unitAttributes: []

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ce76cbb2754baca6cfaa6dd63b19fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a5e08c58c324448a1893e22fac4b0af, type: 3}
   m_Name: Catapult
   m_EditorClassIdentifier: 
   serializationData:
@@ -25,4 +25,4 @@ MonoBehaviour:
   attackDamage: 35
   healthPoints: 10
   armorPoints: 80
-  unitAttribute: {fileID: 11400000, guid: 5f022ef8bc1f9e24baa30c1fa981c1b3, type: 2}
+  unitAttributes: []

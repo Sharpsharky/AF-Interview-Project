@@ -1,3 +1,5 @@
+using System;
+
 namespace AFSInterview.Units
 {
     using Sirenix.OdinInspector;
@@ -10,10 +12,25 @@ namespace AFSInterview.Units
         [SerializeField, BoxGroup("UI")] private Image healthBar;
         [SerializeField, BoxGroup("UI")] private Image armorBar;
 
-        public void InitializeUnitUI()
+        public void SetName(string nameToSet)
         {
-            
+            unitName.text = nameToSet;
         }
         
+        public void ReloadHealthPoints(int currentHealth, int maxHealth)
+        {
+            healthBar.fillAmount = (float) currentHealth / maxHealth;
+        }
+        
+        public void ReloadArmorPoints(int currentArmor, int maxArmor)
+        {
+            armorBar.fillAmount = (float) currentArmor / maxArmor;
+        }
+
+        private void LateUpdate()
+        {
+            transform.LookAt(Camera.main.transform);
+            transform.Rotate(0,180,0);
+        }
     }
 }
