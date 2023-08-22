@@ -14,6 +14,11 @@
 
 		public int ItemsCount => items.Count;
 
+		private void Start()
+		{
+			OnReloadMoneyText?.Invoke(money);
+		}
+
 		public void SellAllItemsUpToValue(int maxValue)
 		{
 			for (var i = items.Count - 1; i >= 0; i--)
@@ -26,7 +31,7 @@
 				items.RemoveAt(i);
 			}
 
-			OnReloadMoneyText(money);
+			OnReloadMoneyText?.Invoke(money);
 
 		}
 
