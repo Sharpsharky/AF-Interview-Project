@@ -5,8 +5,10 @@
 ## Part 1
 
 a) Fixed the bug by decrementing the for loop instead of incrementing it.
+
 b) GetComponent on every frame is not a good practice. It's better to do it once. Moreover, I implemented an **Object pooling pattern** 
 to optimize memory usage and performance.
+
 c) I created scriptable objects for every item. Used inheritance for consumables. I named "EatableItem" items that give money when used and 
 "ItemGivingItem" items that give specific items when used (at least, it is what I understood I must do). I also created ItemContainer for all 
 items in the game so the spawner can draw items from it.
