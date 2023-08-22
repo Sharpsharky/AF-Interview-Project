@@ -2,7 +2,7 @@
 
 # Interview Project for Ancient Forge
 
-## Part 1
+## Part 1 (Scene Game Part 1)
 
 a) Fixed the bug by decrementing the for loop instead of incrementing it.
 
@@ -13,7 +13,7 @@ c) I created scriptable objects for every item. Used inheritance for consumables
 "ItemGivingItem" items that give specific items when used (at least, it is what I understood I must do). I also created ItemContainer for all 
 items in the game so the spawner can draw items from it.
 
-## Part 2
+## Part 2 (Scene Game Part 2)
 
 I created Unit Scriptable Object so designers can define every unit class attribute easily (all the scriptable objects are in Assets/Scriptable Objects/).
 I created UnitAttribute to define what types of units have what amount of damage on particular units (of course when not defined, the damage is default).
