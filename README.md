@@ -1,4 +1,4 @@
-<img src="Images/Insight.PNG" align="middle" width="3000"/>
+<img src="Images/insight.png" align="middle" width="3000"/>
 
 # Interview Project for Ancient Forge
 
