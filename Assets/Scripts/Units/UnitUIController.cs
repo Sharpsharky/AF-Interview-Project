@@ -1,5 +1,3 @@
-using System;
-
 namespace AFSInterview.Units
 {
     using Sirenix.OdinInspector;

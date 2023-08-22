@@ -25,4 +25,5 @@ MonoBehaviour:
   attackDamage: 30
   healthPoints: 10
   armorPoints: 100
+  attackInterval: 2
   unitAttributes: []

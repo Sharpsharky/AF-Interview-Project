@@ -105,7 +105,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 319
+    m_Bits: 4294967295
 --- !u!114 &4457738567146447473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +210,7 @@ MonoBehaviour:
   unit: {fileID: 11400000, guid: b1e8e5945177f73488316f8dcbdb1ffb, type: 2}
   unitUIController: {fileID: 4457738567146447473}
   timeToHitEnemy: 1
+  scaleWhenHitByEnemy: 0.5
   projectilePrefab: {fileID: 9160572532367253714, guid: ef33db9ddc7ca9b49b35b448e93949e8,
     type: 3}
 --- !u!1 &1987405443862179837

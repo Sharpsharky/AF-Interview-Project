@@ -11,7 +11,9 @@ namespace AFSInterview.Units.UnitClasses.MainClasses
         {
             int damage = GetDamage(unitPresenter.UnitAttributes);
             MoveToEnemy(unitPresenter.transform.position);
-            StartCoroutine(ExecuteAttack(unitPresenter, damage, OnFinishCurrentState));
+            StartCoroutine(ExecuteAttack(unitPresenter, damage));
+            StartCoroutine(FinishStateWhenUnitIsBackInPlace(OnFinishCurrentState));
+            attackInterval = unit.AttackInterval;
         }
         
         public void MoveToEnemy(Vector3 enemyPosition)
@@ -22,11 +24,16 @@ namespace AFSInterview.Units.UnitClasses.MainClasses
             transform.DOMove(currentPos,TimeToHitEnemy).SetDelay(TimeToHitEnemy).SetEase(Ease.OutBack);
         }
 
-        private IEnumerator ExecuteAttack(UnitPresenter unitPresenter, int damage, 
-            Action OnFinishCurrentState)
+        public IEnumerator FinishStateWhenUnitIsBackInPlace(Action OnFinishCurrentState)
+        {
+            yield return new WaitForSeconds(2 * TimeToHitEnemy);
+            OnFinishCurrentState();
+        }
+
+        private IEnumerator ExecuteAttack(UnitPresenter unitPresenter, int damage)
         {
             yield return new WaitForSeconds(TimeToHitEnemy);
-            unitPresenter.AcquireDamage(damage, OnFinishCurrentState);        
+            unitPresenter.AcquireDamage(damage);        
         }
     }
 }

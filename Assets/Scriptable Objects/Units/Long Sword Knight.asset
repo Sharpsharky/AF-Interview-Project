@@ -21,8 +21,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  name: Long Sword Knights
+  name: Long Sword Knight
   attackDamage: 35
   healthPoints: 70
   armorPoints: 70
+  attackInterval: 2
   unitAttributes: []

@@ -1,17 +1,16 @@
-using System;
-using AFSInterview.Units.UnitClasses.MainClasses;
-
 namespace AFSInterview.Battle
 {
     using System.Collections.Generic;
     using Sirenix.OdinInspector;
     using UnityEngine;
     using Random = UnityEngine.Random;
-    using Units.UnitClasses;
-
+    using System;
+    using Units.UnitClasses.MainClasses;
+    
     public class TeamController : SerializedMonoBehaviour
     {
         [SerializeField] private string teamName;
+        [SerializeField] private BattlePanelController battlePanelController;
         private List<UnitPresenter> aliveUnits = new List<UnitPresenter>();
 
         private void Awake()
@@ -22,10 +21,24 @@ namespace AFSInterview.Battle
         public void AttackEnemyTeam(TeamController enemyTeam, Action OnFinishCurrentState)
         {
             var attackingEnemy = DrawUnitToAttack();
-            var defendingEnemy = enemyTeam.DrawUnitToAttack();
+            var defendingEnemy = enemyTeam.DrawUnitToDefend();
+
+            if (attackingEnemy == null)
+            {
+                battlePanelController.DisplayNoUnitAvailableForAMoment(teamName, OnFinishCurrentState);
+                return;
+            }
             
             attackingEnemy.AttackEnemy(defendingEnemy, OnFinishCurrentState);
             
+        }
+
+        public void DecreaseAttackIntervalOfUnits()
+        {
+            foreach (var unit in aliveUnits)
+            {
+                unit.DecreaseAttackInterval();
+            }
         }
 
         public void RemoveUnitFromList(UnitPresenter unitToRemove)
@@ -37,8 +50,23 @@ namespace AFSInterview.Battle
         {
             return aliveUnits.Count;
         }
-
+        
         public UnitPresenter DrawUnitToAttack()
+        {
+            List<UnitPresenter> availableUnits = new List<UnitPresenter>();
+
+            foreach (var unit in aliveUnits)
+            {
+                if(unit.AttackInterval <= 0) availableUnits.Add(unit);
+            }
+
+            if (availableUnits.Count == 0) return null;
+            
+            int rand = Random.Range(0, availableUnits.Count);
+            return availableUnits[rand];
+        }
+        
+        public UnitPresenter DrawUnitToDefend()
         {
             int rand = Random.Range(0, aliveUnits.Count);
             return aliveUnits[rand];

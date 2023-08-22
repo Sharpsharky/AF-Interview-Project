@@ -1,19 +1,25 @@
-using System;
-using System.Collections;
-using AFSInterview.General;
-using Sirenix.OdinInspector;
-using TMPro;
-using UnityEngine;
-
 namespace AFSInterview.Battle
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using General;
+    using DG.Tweening;
+    using Sirenix.OdinInspector;
+    using TMPro;
+    using UnityEngine;
+
     public class BattlePanelController : SerializedMonoBehaviour
     {
         [SerializeField] private TMP_Text timeCounterText;
-        [SerializeField] private TMP_Text teamNameText;
+        [SerializeField] private TMP_Text informationText;
         
+        [SerializeField] private float timeCounting = 1;
+        [SerializeField] private float timeNoUnitAvailable = 4;
         [SerializeField] private float initialScaleOfTimeCounter = 1;
         [SerializeField] private float scaleMultiplicationOfTimeCounter = -0.5f;
+
+        [SerializeField] private List<string> counterInfos = new List<string>();
 
         public void StartCountingTime(int timeToCount, Action OnFinishCurrentState)
         {
@@ -22,10 +28,25 @@ namespace AFSInterview.Battle
         }        
         public void DisplayWinningTeam(string teamName)
         {
-            Debug.Log("team won:" + teamName);
-            teamNameText.text = $"Team {teamName} won!";
-            teamNameText.gameObject.SetActive(true);
+            informationText.text = $"Team {teamName} won!";
+            informationText.gameObject.SetActive(true);
         }
+        
+        public void DisplayNoUnitAvailableForAMoment(string teamName, Action OnFinishCurrentState)
+        {
+            StartCoroutine(DisplayNoUnitAvailable(teamName, OnFinishCurrentState));
+        }
+        private IEnumerator DisplayNoUnitAvailable(string teamName, Action OnFinishCurrentState)
+        {
+            informationText.text = $"No unit in team {teamName} is available now!";
+            informationText.gameObject.SetActive(true);
+            
+            yield return new WaitForSeconds(timeNoUnitAvailable);
+
+            informationText.gameObject.SetActive(false);
+            OnFinishCurrentState();
+        }
+        
 
         private IEnumerator CountTime(int timeToCount, Action OnFinishCurrentState)
         {
@@ -34,10 +55,22 @@ namespace AFSInterview.Battle
                 DoTweenCustomAnimations.DoBlinkScale(timeCounterText.transform,initialScaleOfTimeCounter,
                     scaleMultiplicationOfTimeCounter);
                 timeCounterText.text = i.ToString();
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(timeCounting);
             }
-            timeCounterText.gameObject.SetActive(false);
+            foreach (string counterInfo in counterInfos)
+            {
+                DoTweenCustomAnimations.DoBlinkScale(timeCounterText.transform,initialScaleOfTimeCounter,
+                    scaleMultiplicationOfTimeCounter);
+                timeCounterText.text = counterInfo;
+                yield return new WaitForSeconds(2*timeCounting);
+            }
+
             OnFinishCurrentState();
+            
+            timeCounterText.transform.DOScale(0, timeCounting).SetDelay(0);
+            yield return new WaitForSeconds(timeCounting);
+            timeCounterText.gameObject.SetActive(false);
+
             yield return null;
         }
     }

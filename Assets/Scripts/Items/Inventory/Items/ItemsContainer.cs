@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using AFSInterview.Items.Inventory.Items.ItemsSO;
-using Sirenix.OdinInspector;
-using UnityEngine;
-
 namespace AFSInterview.Items.Inventory.Items
 {
+    using System.Collections.Generic;
+    using ItemsSO;
+    using Sirenix.OdinInspector;
+    using UnityEngine;
+    
     public class ItemsContainer : MonoBehaviour
     {
         [SerializeField, InlineEditor] private List<Item> items = new List<Item>();

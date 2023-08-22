@@ -1,7 +1,7 @@
-using UnityEngine;
-
 namespace AFSInterview.General
 {
+	using UnityEngine;
+
     public class ObjectPoolInitializer : MonoBehaviour
     {
 	    //if the object is on the scene, the pool should be selected manually,

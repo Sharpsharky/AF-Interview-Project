@@ -1,5 +1,3 @@
-using AFSInterview.General;
-
 namespace AFSInterview.Units.UnitClasses.MainClasses
 {
     using System;
@@ -9,18 +7,21 @@ namespace AFSInterview.Units.UnitClasses.MainClasses
     using UnitsSO;
     using Sirenix.OdinInspector;
     using UnityEngine;
+    using General;
+
     public abstract class UnitPresenter : SerializedMonoBehaviour 
     {
-        [SerializeField, InlineEditor] private Unit unit;
+        [SerializeField, InlineEditor] protected Unit unit;
         [SerializeField] private UnitUIController unitUIController;
         [SerializeField] private float timeToHitEnemy = 1;
         [SerializeField] private float scaleWhenHitByEnemy = 0.5f;
         
-        private string unitName;
-        private int currentHealth;
-        private int currentArmor;
-        private int attackDamage;
-        private List<UnitAttribute> unitAttributes = new List<UnitAttribute>();
+        protected string unitName;
+        protected int currentHealth;
+        protected int currentArmor;
+        protected int attackDamage;
+        protected int attackInterval;
+        protected List<UnitAttribute> unitAttributes = new List<UnitAttribute>();
 
         private float initialScale;
         
@@ -29,6 +30,7 @@ namespace AFSInterview.Units.UnitClasses.MainClasses
         public List<UnitAttribute> UnitAttributes => unitAttributes;
         public string UnitName => unitName;
         public float TimeToHitEnemy => timeToHitEnemy;
+        public int AttackInterval => attackInterval;
 
         private void Awake()
         {
@@ -46,9 +48,17 @@ namespace AFSInterview.Units.UnitClasses.MainClasses
         {
             Debug.Log($"{unit.name} attacked {unitPresenter.UnitName}");
             int damage = GetDamage(unitPresenter.UnitAttributes);
-            unitPresenter.AcquireDamage(damage, OnFinishCurrentState);
+            unitPresenter.AcquireDamage(damage);
+            attackInterval = unit.AttackInterval;
         }
 
+        public void DecreaseAttackInterval()
+        {
+            attackInterval--;
+            if (attackInterval < 0) 
+                attackInterval = 0;
+        }
+        
         protected int GetDamage(List<UnitAttribute> enemyUnitAttributes)
         {
             int potentialAttackDamage = 0;
@@ -71,7 +81,7 @@ namespace AFSInterview.Units.UnitClasses.MainClasses
             return attackDamage;
         }
 
-        public virtual void AcquireDamage(int damage, Action OnFinishCurrentState)
+        public virtual void AcquireDamage(int damage)
         {
             currentArmor -= damage;
             if (currentArmor < 0)
@@ -91,8 +101,7 @@ namespace AFSInterview.Units.UnitClasses.MainClasses
             
             DoTweenCustomAnimations.DoBlinkScale(transform, initialScale, 
                 initialScale - scaleWhenHitByEnemy);
-            
-            OnFinishCurrentState();
+
         }
 
         protected virtual void GetKilled()
@@ -107,6 +116,7 @@ namespace AFSInterview.Units.UnitClasses.MainClasses
             currentHealth = unit.HealthPoints;
             currentArmor = unit.ArmorPoints;
             attackDamage = unit.AttackDamage;
+            attackInterval = 0;
             unitAttributes = unit.UnitAttributes;
         }
         

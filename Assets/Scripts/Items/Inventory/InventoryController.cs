@@ -1,12 +1,11 @@
-﻿using AFSInterview.Items.Inventory.Items.ItemsSO;
-
+﻿
 namespace AFSInterview.Items.Inventory
 {
 	using System;
 	using System.Collections.Generic;
-	using Items;
 	using UnityEngine;
 	using Sirenix.OdinInspector;
+	using Items.ItemsSO;
 
 	public class InventoryController : SerializedMonoBehaviour
 	{

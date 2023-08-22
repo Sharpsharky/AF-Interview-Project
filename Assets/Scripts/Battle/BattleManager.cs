@@ -86,11 +86,13 @@ namespace AFSInterview.Battle
                 }
                 case BattleState.FirstTeamTurn:
                 {
+                    firstTeamController.DecreaseAttackIntervalOfUnits();
                     firstTeamController.AttackEnemyTeam(secondTeamController, OnFinishCurrentState);
                     break;
                 }
                 case BattleState.SecondTeamTurn:
                 {
+                    secondTeamController.DecreaseAttackIntervalOfUnits();
                     secondTeamController.AttackEnemyTeam(firstTeamController, OnFinishCurrentState);
                     break;
                 }
