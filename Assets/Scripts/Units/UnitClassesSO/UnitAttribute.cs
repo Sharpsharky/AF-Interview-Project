@@ -9,7 +9,9 @@ namespace AFSInterview.Units.UnitClassesSO
         {
             [SerializeField] private Dictionary<UnitAttribute, int> attackDamageForSpecificUnits = 
                new Dictionary<UnitAttribute, int>();
-        
+
+            public Dictionary<UnitAttribute, int> AttackDamageForSpecificUnits => attackDamageForSpecificUnits;
+
         }
     
    

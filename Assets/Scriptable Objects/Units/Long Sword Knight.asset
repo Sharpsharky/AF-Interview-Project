@@ -25,4 +25,4 @@ MonoBehaviour:
   attackDamage: 35
   healthPoints: 70
   armorPoints: 70
-  unitAttribute: {fileID: 0}
+  unitAttribute: {fileID: 11400000, guid: 890db0f9f8a23ff4794e7c1380e73dc4, type: 2}
