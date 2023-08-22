@@ -80,7 +80,7 @@ namespace AFSInterview.Units.UnitClasses.MainClasses
             }
             currentArmor = 0;
 
-            if (currentHealth < 0)
+            if (currentHealth <= 0)
             {
                 currentHealth = 0;
                 GetKilled();
