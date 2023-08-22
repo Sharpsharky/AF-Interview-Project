@@ -446,6 +446,9 @@ MonoBehaviour:
     SerializationNodes: []
   unit: {fileID: 11400000, guid: e5f9261cfc67501418f54c3ce16aad69, type: 2}
   unitUIController: {fileID: 6865346439713097528}
+  timeToHitEnemy: 1
+  projectilePrefab: {fileID: 1749534121197287919, guid: 2688f576007d88042aa31695b4598b0a,
+    type: 3}
 --- !u!1 &6806096197896307112
 GameObject:
   m_ObjectHideFlags: 0

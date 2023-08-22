@@ -369,7 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 253070015223487002}
   - component: {fileID: 3224994516198069285}
-  - component: {fileID: 2577413432059662167}
+  - component: {fileID: 7194903332751571767}
   m_Layer: 3
   m_Name: Ram
   m_TagString: Untagged
@@ -392,7 +392,7 @@ Transform:
   - {fileID: 6177582659719057327}
   - {fileID: 7133897606583737930}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3224994516198069285
 BoxCollider:
@@ -415,7 +415,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &2577413432059662167
+--- !u!114 &7194903332751571767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5536578262065056089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f457db1985a942139de14c955599e9ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 77ec3e75abc843c492c42796b131afc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -438,6 +438,7 @@ MonoBehaviour:
     SerializationNodes: []
   unit: {fileID: 11400000, guid: 32a5f858984e55b45806ca138dbe5b94, type: 2}
   unitUIController: {fileID: 4706205909128974344}
+  timeToHitEnemy: 1
 --- !u!1 &8082912390156382891
 GameObject:
   m_ObjectHideFlags: 0

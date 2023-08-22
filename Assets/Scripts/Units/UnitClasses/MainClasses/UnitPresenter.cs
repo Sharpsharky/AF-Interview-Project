@@ -1,17 +1,20 @@
-namespace AFSInterview.Units.UnitClasses
+using AFSInterview.General;
+
+namespace AFSInterview.Units.UnitClasses.MainClasses
 {
+    using System;
+    using System.Collections.Generic;
+    using Battle;
+    using UnitClassesSO;
     using UnitsSO;
     using Sirenix.OdinInspector;
     using UnityEngine;
-    using System.Collections.Generic;
-    using UnitClassesSO;
-    using System;
-    using Battle;
-
     public abstract class UnitPresenter : SerializedMonoBehaviour 
     {
         [SerializeField, InlineEditor] private Unit unit;
         [SerializeField] private UnitUIController unitUIController;
+        [SerializeField] private float timeToHitEnemy = 1;
+        [SerializeField] private float scaleWhenHitByEnemy = 0.5f;
         
         private string unitName;
         private int currentHealth;
@@ -19,15 +22,19 @@ namespace AFSInterview.Units.UnitClasses
         private int attackDamage;
         private List<UnitAttribute> unitAttributes = new List<UnitAttribute>();
 
+        private float initialScale;
+        
         private TeamController teamController;
 
         public List<UnitAttribute> UnitAttributes => unitAttributes;
         public string UnitName => unitName;
+        public float TimeToHitEnemy => timeToHitEnemy;
 
         private void Awake()
         {
             InitializeUnit();
             InitializeUI();
+            initialScale = transform.localScale.x;
         }
 
         public void Initialize(TeamController teamController)
@@ -79,10 +86,12 @@ namespace AFSInterview.Units.UnitClasses
                 GetKilled();
             }
 
-            unitUIController.ReloadHealthPoints(currentArmor, unit.ArmorPoints);
-            unitUIController.ReloadArmorPoints(currentHealth, unit.HealthPoints);
+            unitUIController.ReloadHealthPoints(currentHealth, unit.HealthPoints);
+            unitUIController.ReloadArmorPoints(currentArmor, unit.ArmorPoints);
             
-            Debug.Log("Acquire Damage");
+            DoTweenCustomAnimations.DoBlinkScale(transform, initialScale, 
+                initialScale - scaleWhenHitByEnemy);
+            
             OnFinishCurrentState();
         }
 

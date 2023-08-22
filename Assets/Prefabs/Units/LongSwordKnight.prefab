@@ -245,7 +245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2501732190297693486}
   - component: {fileID: 1884402040089561028}
-  - component: {fileID: 35623863713126325}
+  - component: {fileID: 6711969745730072923}
   m_Layer: 3
   m_Name: LongSwordKnight
   m_TagString: Untagged
@@ -268,7 +268,7 @@ Transform:
   - {fileID: 8739669000267707274}
   - {fileID: 6469327028890657449}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1884402040089561028
 BoxCollider:
@@ -291,7 +291,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &35623863713126325
+--- !u!114 &6711969745730072923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7172221957694987180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f457db1985a942139de14c955599e9ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d4d42ef94a24fa4a4938b20927c47b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -314,6 +314,7 @@ MonoBehaviour:
     SerializationNodes: []
   unit: {fileID: 11400000, guid: b5bc77747c0403b4c814d06f9729cd4b, type: 2}
   unitUIController: {fileID: 7776903993792406264}
+  timeToHitEnemy: 1
 --- !u!1 &7551179085340139483
 GameObject:
   m_ObjectHideFlags: 0

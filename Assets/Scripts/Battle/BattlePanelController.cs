@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using AFSInterview.General;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,9 @@ namespace AFSInterview.Battle
     {
         [SerializeField] private TMP_Text timeCounterText;
         [SerializeField] private TMP_Text teamNameText;
+        
+        [SerializeField] private float initialScaleOfTimeCounter = 1;
+        [SerializeField] private float scaleMultiplicationOfTimeCounter = -0.5f;
 
         public void StartCountingTime(int timeToCount, Action OnFinishCurrentState)
         {
@@ -27,6 +31,8 @@ namespace AFSInterview.Battle
         {
             for (int i = timeToCount; i >= 1; i--)
             {
+                DoTweenCustomAnimations.DoBlinkScale(timeCounterText.transform,initialScaleOfTimeCounter,
+                    scaleMultiplicationOfTimeCounter);
                 timeCounterText.text = i.ToString();
                 yield return new WaitForSeconds(1);
             }

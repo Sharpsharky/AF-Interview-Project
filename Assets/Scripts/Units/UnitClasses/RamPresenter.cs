@@ -1,12 +1,10 @@
+using AFSInterview.Units.UnitClasses.MainClasses;
+
 namespace AFSInterview.Units.UnitClasses
 {
-    using System;
 
-    public class RamPresenter : UnitPresenter
+    public class RamPresenter : MeleeUnitPresenter
     {
-        public virtual void AttackEnemy(UnitPresenter unitPresenter, Action OnFinishCurrentState)
-        {
-            base.AttackEnemy(unitPresenter, OnFinishCurrentState);
-        }
+
     }
 }

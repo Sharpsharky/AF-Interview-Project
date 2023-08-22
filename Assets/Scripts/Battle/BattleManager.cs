@@ -1,9 +1,8 @@
-using System;
-
 namespace AFSInterview.Battle
 {
     using Sirenix.OdinInspector;
     using UnityEngine;
+    using System;
 
     public class BattleManager : SerializedMonoBehaviour
     {
@@ -15,11 +14,9 @@ namespace AFSInterview.Battle
         [SerializeField] private int secondsToStartBattle = 3;
         [SerializeField] private float timeToChangeState = 1;
         
-        
         [SerializeField] private BattlePanelController battlePanelController;
 
-        public Action OnFinishCurrentState;
-
+        private Action OnFinishCurrentState;
         private string teamNameThatWon;
         
         private void Awake()

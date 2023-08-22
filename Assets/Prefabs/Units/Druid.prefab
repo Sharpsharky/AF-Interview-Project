@@ -109,7 +109,7 @@ Transform:
   - {fileID: 1561288455823575174}
   - {fileID: 8755288649714476991}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &9210823183497014485
 BoxCollider:
@@ -155,6 +155,9 @@ MonoBehaviour:
     SerializationNodes: []
   unit: {fileID: 11400000, guid: 90cf401719d55654091f1d31b16deff6, type: 2}
   unitUIController: {fileID: 4690037518474166448}
+  timeToHitEnemy: 1
+  projectilePrefab: {fileID: 7766198805828935012, guid: 030e78a63cdf762438172befb4024670,
+    type: 3}
 --- !u!1 &4256871531592225663
 GameObject:
   m_ObjectHideFlags: 0
