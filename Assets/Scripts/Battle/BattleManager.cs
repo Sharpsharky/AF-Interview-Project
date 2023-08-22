@@ -42,7 +42,11 @@ namespace AFSInterview.Battle
             {
                 case BattleState.Start:
                 {
-                    ChangeState(BattleState.FirstTeamTurn);
+                    int rand = UnityEngine.Random.Range(0, 2);
+                    
+                    if(rand == 0) ChangeState(BattleState.FirstTeamTurn);
+                    else ChangeState(BattleState.SecondTeamTurn);
+                    
                     break;
                 }
                 case BattleState.FirstTeamTurn:
